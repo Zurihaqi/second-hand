@@ -1,0 +1,27 @@
+.login-form{
+    margin-top: 20%;
+}
+.custom-font{
+  font-size: 14px;
+}
+.arrow-back{
+  display: none;
+}
+
+
+@media screen and (max-width: 500px){
+    img{
+      display: none;
+    }
+    .custom-font{
+      font-size: 14px;
+      position: fixed;
+      bottom: 0;
+    }
+    .arrow-back{
+      display: block;
+      color: black;
+      width: 24px;
+      height: 24px; 
+    }
+}

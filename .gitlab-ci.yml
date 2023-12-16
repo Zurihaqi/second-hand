@@ -1,0 +1,28 @@
+stages:
+  - deploy
+
+image: node:lts
+
+cache:
+  paths:
+    - node_modules
+
+before_script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+
+deploy staging job:
+  stage: deploy
+  image: ruby
+  only:
+    - staging
+  environment:
+    name: pre production
+    url: https://kel-7-final-project.herokuapp.com/
+  script:
+    - gem install faraday -v 1.10.0
+    - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+    
+    
+    

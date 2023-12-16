@@ -1,0 +1,67 @@
+.navbarLogo{
+    width: 100px;
+    height: 34px;
+    background: #4B1979;
+}
+.customSearch{
+    background: #EEEEEE;
+    border-radius: 16px;
+    max-width: 444px;
+    border-right: none;
+}
+.customSearchIcon{
+    border-radius: 16px;
+    background: #EEEEEE;
+    border-left: none;
+}
+.btnBackground{
+    background: #7126B5;
+    border-radius: 12px;
+    width: 105px;
+}
+#SidebarMobile{
+    display: none;
+}
+
+.dropdown-menu{
+    width: 380px;
+    border-radius: 16px;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+.label-10px {
+    font-size: 10px;
+}
+
+
+
+
+
+/* media query */
+@media screen and (max-width: 600px){
+   #NavDekstop{
+    display: none;
+   }
+   #SidebarMobile{
+    display: block;
+   }
+   .btnMobile{
+    border-radius: 16px;
+   }
+   .customSearch2{
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 264px;
+    border-right: none;
+    }
+    .customSearchIcon2{
+    background: #FFFFFF;
+    border-left: none;
+    border-radius: 16px;
+    }
+    li{
+        list-style: none;
+    }
+}
+

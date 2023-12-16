@@ -1,0 +1,222 @@
+{
+  "DummyBarangTerjual" : [
+    {
+      "id" : "1",
+      "nama" : "jam tangan 1",
+      "image" : "images/product-1.png",
+      "kategori" : "aksesoris",
+      "harga" : "250000",
+      "hargaTawar" : "200000",
+      "tanggal" : "2022-03-18 02:00:00.0",
+      "status" : "diminati",
+      "penawaran" : [
+        {
+          "idPenawaran" : "1",
+          "namaPenawar" : "John",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "2",
+          "namaPenawar" : "John2",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "3",
+          "namaPenawar" : "John3",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "4",
+          "namaPenawar" : "John4",
+          "hargaPenawaran" : "200000"
+        }
+      ],
+      "terjual" : [
+        {
+          "idTerjual" : "1",
+          "namaPenawar" : "John",
+          "hargaTerjual" : "200000"
+        }
+      ]
+    },
+    {
+      "id" : "2",
+      "nama" : "jam tangan 2",
+      "image" : "images/product-1.png",
+      "kategori" : "aksesoris",
+      "harga" : "250000",
+      "hargaTawar" : "200000",
+      "tanggal" : "2022-06-08 02:00:00.0",
+      "status" : "diminati",
+      "penawaran" : [
+        {
+          "idPenawaran" : "1",
+          "namaPenawar" : "John",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "2",
+          "namaPenawar" : "John2",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "3",
+          "namaPenawar" : "John3",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "4",
+          "namaPenawar" : "John4",
+          "hargaPenawaran" : "200000"
+        }
+      ],
+      "terjual" : []
+    },
+    {
+      "id" : "3",
+      "nama" : "jam tangan 3",
+      "image" : "images/product-1.png",
+      "kategori" : "aksesoris",
+      "harga" : "250000",
+      "hargaTawar" : "200000",
+      "tanggal" : "2015-03-08 02:00:00.0",
+      "status" : "diminati",
+      "penawaran" : [
+        {
+          "idPenawaran" : "1",
+          "namaPenawar" : "John",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "2",
+          "namaPenawar" : "John2",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "3",
+          "namaPenawar" : "John3",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "4",
+          "namaPenawar" : "John4",
+          "hargaPenawaran" : "200000"
+        }
+      ],
+      "terjual" : []
+    },
+    {
+      "id" : "4",
+      "nama" : "jam tangan 4",
+      "image" : "images/product-1.png",
+      "kategori" : "aksesoris",
+      "harga" : "250000",
+      "hargaTawar" : "200000",
+      "tanggal" : "2015-03-08 02:00:00.0",
+      "status" : "diminati",
+      "penawaran" : [
+        {
+          "idPenawaran" : "1",
+          "namaPenawar" : "John",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "2",
+          "namaPenawar" : "John2",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "3",
+          "namaPenawar" : "John3",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "4",
+          "namaPenawar" : "John4",
+          "hargaPenawaran" : "200000"
+        }
+      ],
+      "terjual" : []
+    },
+    {
+      "id" : "5",
+      "nama" : "jam tangan 5",
+      "image" : "images/product-1.png",
+      "kategori" : "aksesoris",
+      "harga" : "250000",
+      "hargaTawar" : "200000",
+      "tanggal" : "2015-03-08 02:00:00.0",
+      "status" : "diminati",
+      "penawaran" : [
+        {
+          "idPenawaran" : "1",
+          "namaPenawar" : "John",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "2",
+          "namaPenawar" : "John2",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "3",
+          "namaPenawar" : "John3",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "4",
+          "namaPenawar" : "John4",
+          "hargaPenawaran" : "200000"
+        }
+      ],
+      "terjual" : []
+    },
+    {
+      "id" : "6",
+      "nama" : "jam tangan 6",
+      "image" : "images/product-1.png",
+      "kategori" : "aksesoris",
+      "harga" : "250000",
+      "hargaTawar" : "200000",
+      "tanggal" : "2015-03-08 02:00:00.0",
+      "status" : "diminati",
+      "penawaran" : [
+        {
+          "idPenawaran" : "1",
+          "namaPenawar" : "John",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "2",
+          "namaPenawar" : "John2",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "3",
+          "namaPenawar" : "John3",
+          "hargaPenawaran" : "200000"
+        },
+        {
+          "idPenawaran" : "4",
+          "namaPenawar" : "John4",
+          "hargaPenawaran" : "200000"
+        }
+      ],
+      "terjual" : []
+    },
+    {
+      "id" : "7",
+      "nama" : "jam tangan 7",
+      "image" : "images/product-1.png",
+      "kategori" : "aksesoris",
+      "harga" : "250000",
+      "hargaTawar" : "200000",
+      "tanggal" : "2015-03-08 02:00:00.0",
+      "status" : "diminati",
+      "penawaran" : [
+
+      ],
+      "terjual" : []
+    }
+  ]
+}

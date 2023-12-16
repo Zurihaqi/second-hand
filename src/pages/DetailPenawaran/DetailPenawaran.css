@@ -1,0 +1,87 @@
+.detail-penawaran-page {
+    margin-top: 40px;
+  }
+  
+  .detail-penawaran-page .title-main,
+  .detail-penawaran-page .lead {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: black;
+  }
+  
+  .detail-penawaran-page .lead {
+    font-size: 16px;
+    line-height: normal;
+    margin-top: 30px;
+  }
+  
+  .detail-penawaran-page-seller {
+    padding: 16px;
+    margin-top: 24px;
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    height: 80px;
+  }
+  
+  .detail-penawaran-page-seller img {
+    height: 48px;
+    width: 48px;
+    border-radius: 12px;
+    display: block;
+  }
+  
+  .detail-penawaran-page-seller .flex-fill {
+    margin-left: 16px;
+    height: 38px;
+    max-height: max-content;
+  }
+  
+  .detail-penawaran-page-seller .flex-fill .title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 0;
+  }
+  
+  .detail-penawaran-page-seller .flex-fill .text {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    color: #8A8A8A;
+    margin-top: 4px;
+  }
+  
+  .detail-penawaran-page .btn {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 16px;
+    min-width: 158px;
+    height: 36px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    border: none;
+  }
+  
+  .detail-penawaran-page .btn:first-child {
+    border: 1px solid #7126B5;
+    background-color: white;
+    color: #151515;
+  }
+  
+  .detail-penawaran-page .btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .detail-penawaran-page .modalBuyBtn {
+    border: none;
+    text-decoration: none;
+  }
+  
+  .detail-penawaran-page .modalBuyBtn:hover {
+    color: white;
+    transform: scale(1.05);
+  }
+  
