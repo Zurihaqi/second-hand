@@ -1,6 +1,5 @@
-import FormatCurrencies from "../FormatCurriencies/FormatCurrencies";
+import FormatCurrencies from "../FormatCurrencies/FormatCurrencies";
 import "./Card.css";
-
 
 const Card = ({ img, name, category, price, href }) => {
   return (
@@ -16,6 +15,5 @@ const Card = ({ img, name, category, price, href }) => {
     </a>
   );
 };
-
 
 export default Card;

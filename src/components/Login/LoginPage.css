@@ -1,27 +1,26 @@
-.login-form{
-    margin-top: 20%;
+.login-form {
+  margin-top: 20%;
 }
-.custom-font{
+.custom-font {
   font-size: 14px;
 }
-.arrow-back{
+.arrow-back {
   display: none;
 }
 
-
-@media screen and (max-width: 500px){
-    img{
-      display: none;
-    }
-    .custom-font{
-      font-size: 14px;
-      position: fixed;
-      bottom: 0;
-    }
-    .arrow-back{
-      display: block;
-      color: black;
-      width: 24px;
-      height: 24px; 
-    }
+@media screen and (max-width: 800px) {
+  .login-img {
+    display: none;
+  }
+  .custom-font {
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+  }
+  .arrow-back {
+    display: block;
+    color: black;
+    width: 24px;
+    height: 24px;
+  }
 }

@@ -5,92 +5,55 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 export default function Kategori() {
   return (
-    <div>
-      <Container className="mt-3">
-        <p>
-          <b>Telusuri Kategori</b>
-        </p>
-        {/* <Row>
-          <Col lg={2}>
-            <Button className="btn btnCustom1">
-              <p>
-                <AiOutlineSearch />
-                Semua
-              </p>
-            </Button>
-          </Col>
-          <Col lg={2}>
-            <Button className="btn btnCustom2">
-              <p>
-                <AiOutlineSearch />
-                Hobi
-              </p>
-            </Button>
-          </Col>
-          <Col lg={2}>
-            <Button className="btn btnCustom3">
-              <p>
-                <AiOutlineSearch />
-                Kendaraan
-              </p>
-            </Button>
-          </Col>
-          <Col lg={2}>
-            <Button className="btn btnCustom4">
-              <p>
-                <AiOutlineSearch />
-                Baju
-              </p>
-            </Button>
-          </Col>
-          <Col lg={2}>
-            <Button className="btn btnCustom5">
-              <p>
-                <AiOutlineSearch />
-                Elektronik
-              </p>
-            </Button>
-          </Col>
-          <Col lg={2}>
-            <Button className="btn btnCustom6">
-              <p>
-                <AiOutlineSearch />
-                Kesehatan
-              </p>
-            </Button>
-          </Col>
-        </Row> */}
-        <ButtonGroup aria-label="Basic example">
+    <Container className="mt-3">
+      <p>
+        <b>Telusuri Kategori</b>
+      </p>
+      <div className="overflow-auto">
+        <ButtonGroup>
           <Button
-            className="btn btnCustom"
-            style={{ borderTopRightRadius: "12px", borderBottomRightRadius: "12px" }}>
+            style={{
+              borderRadius: "12px",
+              width: "150px",
+            }}
+          >
             <AiOutlineSearch />
             Semua
           </Button>
-          <Button className="btn mx-2 btnCustom" style={{ borderRadius: "12px" }}>
+          <Button
+            className="mx-2"
+            style={{ borderRadius: "12px", width: "150px" }}
+          >
             <AiOutlineSearch />
             Hobi
           </Button>
-          <Button className="btn btnCustom" style={{ borderRadius: "12px" }}>
+          <Button style={{ borderRadius: "12px", width: "150px" }}>
             <AiOutlineSearch />
             Kendaraan
           </Button>
-          <Button className="btn mx-2 btnCustom" style={{ borderRadius: "12px" }}>
+          <Button
+            className="mx-2"
+            style={{ borderRadius: "12px", width: "150px" }}
+          >
             <AiOutlineSearch />
             Baju
           </Button>
-          <Button className="btn btnCustom" style={{ borderRadius: "12px" }}>
+          <Button style={{ borderRadius: "12px", width: "150px" }}>
             <AiOutlineSearch />
             Elektronik
           </Button>
           <Button
-            className="btn mx-2 btnCustom"
-            style={{ borderTopLeftRadius: "12px", borderBottomLeftRadius: "12px" }}>
+            className="mx-2"
+            style={{
+              borderRadius: "12px",
+              width: "150px",
+            }}
+          >
             <AiOutlineSearch />
             Kesehatan
           </Button>
         </ButtonGroup>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 }

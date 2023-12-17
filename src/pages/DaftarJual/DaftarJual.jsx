@@ -4,31 +4,31 @@ import "./DaftarJual.css";
 import Card from "../../components/Card/Card";
 import DaftarKosong from "../../components/DaftarKosong/DaftarKosong";
 import CardLebar from "../../components/CardLebar/CardLebar";
-import NotifikasiPopUp from "../../components/NotifikasiPopUp/NotifikasiPopUp";
 import DummyBarangTerjual from "../../assets/data/dataDummyBarangTerjual.json";
+import NavbarHome from "../../components/Navbar/NavbarHome/NavbarHome";
 
 const DaftarJual = () => {
-    const dataDummy = DummyBarangTerjual.DummyBarangTerjual;
-  
-    const dataDiminati = [];
-    const dataTerjual = [];
-  
-    for (let i = 0; i < dataDummy.length; i++) {
-      if (dataDummy[i].status === "diminati") {
-        dataDiminati.push(dataDummy[i]);
-      }
-    }
-  
-    for (let i = 0; i < dataDummy.length; i++) {
-      if (dataDummy[i].status === "terjual") {
-        dataTerjual.push(dataDummy[i]);
-      }
-    }
-    
+  const dataDummy = DummyBarangTerjual.DummyBarangTerjual;
 
-    return (
+  const dataDiminati = [];
+  const dataTerjual = [];
+
+  for (let i = 0; i < dataDummy.length; i++) {
+    if (dataDummy[i].status === "diminati") {
+      dataDiminati.push(dataDummy[i]);
+    }
+  }
+
+  for (let i = 0; i < dataDummy.length; i++) {
+    if (dataDummy[i].status === "terjual") {
+      dataTerjual.push(dataDummy[i]);
+    }
+  }
+
+  return (
+    <>
+      <NavbarHome />
       <div className="container-fluid daftar-jual">
-        <NotifikasiPopUp />
         <div className="row justify-content-center">
           <div className="col-lg-9">
             <h3 className="title">Daftar Jual Saya</h3>
@@ -40,7 +40,8 @@ const DaftarJual = () => {
               </div>
               <Link
                 to="/profile"
-                className="button d-flex justify-content-center align-items-center">
+                className="button d-flex justify-content-center align-items-center"
+              >
                 Edit
               </Link>
             </div>
@@ -53,7 +54,8 @@ const DaftarJual = () => {
                       className="nav flex-column nav-pills"
                       id="v-pills-tab"
                       role="tablist"
-                      aria-orientation="vertical">
+                      aria-orientation="vertical"
+                    >
                       <button
                         className="nav-link active"
                         id="v-pills-semua-tab"
@@ -62,11 +64,15 @@ const DaftarJual = () => {
                         type="button"
                         role="tab"
                         aria-controls="v-pills-semua"
-                        aria-selected="true">
+                        aria-selected="true"
+                      >
                         <div className="d-flex justify-content-between">
                           <img src="icons/box.svg" alt="box-icons" />
                           <p className="flex-fill">Semua Produk</p>
-                          <img src="icons/chevron-right-active.svg" alt="chevron-right-icon" />
+                          <img
+                            src="icons/chevron-right-active.svg"
+                            alt="chevron-right-icon"
+                          />
                         </div>
                       </button>
                       <button
@@ -77,11 +83,15 @@ const DaftarJual = () => {
                         type="button"
                         role="tab"
                         aria-controls="v-pills-diminati"
-                        aria-selected="false">
+                        aria-selected="false"
+                      >
                         <div className="d-flex justify-content-between">
                           <img src="icons/heart.svg" alt="heart-icons" />
                           <p className="flex-fill">Diminati</p>
-                          <img src="icons/chevron-right.svg" alt="chevron-right-icon" />
+                          <img
+                            src="icons/chevron-right.svg"
+                            alt="chevron-right-icon"
+                          />
                         </div>
                       </button>
                       <button
@@ -92,18 +102,29 @@ const DaftarJual = () => {
                         type="button"
                         role="tab"
                         aria-controls="v-pills-terjual"
-                        aria-selected="false">
+                        aria-selected="false"
+                      >
                         <div className="d-flex justify-content-between">
-                          <img src="icons/dollar-sign.svg" alt="dollar-sign-icons" />
+                          <img
+                            src="icons/dollar-sign.svg"
+                            alt="dollar-sign-icons"
+                          />
                           <p className="flex-fill">Terjual</p>
-                          <img src="icons/chevron-right.svg" alt="chevron-right-icon" />
+                          <img
+                            src="icons/chevron-right.svg"
+                            alt="chevron-right-icon"
+                          />
                         </div>
                       </button>
                     </div>
                   </div>
                 </div>
                 <div className="daftar-jual-kategori-mobile">
-                  <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <ul
+                    className="nav nav-pills mb-3"
+                    id="pills-tab"
+                    role="tablist"
+                  >
                     <li className="nav-item" role="presentation">
                       <button
                         className="nav-link active"
@@ -113,7 +134,8 @@ const DaftarJual = () => {
                         type="button"
                         role="tab"
                         aria-controls="v-pills-semua"
-                        aria-selected="true">
+                        aria-selected="true"
+                      >
                         <div className="d-flex justify-content-between ">
                           <img src="icons/box.svg" alt="box-icons" />
                           <p className="flex-fill">Semua Produk</p>
@@ -129,7 +151,8 @@ const DaftarJual = () => {
                         type="button"
                         role="tab"
                         aria-controls="v-pills-diminati"
-                        aria-selected="false">
+                        aria-selected="false"
+                      >
                         <div className="d-flex justify-content-between ">
                           <img src="icons/heart.svg" alt="heart-icons" />
                           <p className="flex-fill">Diminati</p>
@@ -145,9 +168,13 @@ const DaftarJual = () => {
                         type="button"
                         role="tab"
                         aria-controls="v-pills-terjual"
-                        aria-selected="false">
+                        aria-selected="false"
+                      >
                         <div className="d-flex justify-content-between ">
-                          <img src="icons/dollar-sign.svg" alt="dollar-sign-icons" />
+                          <img
+                            src="icons/dollar-sign.svg"
+                            alt="dollar-sign-icons"
+                          />
                           <p className="flex-fill">Terjual</p>
                         </div>
                       </button>
@@ -159,17 +186,22 @@ const DaftarJual = () => {
                     className="tab-pane fade show active"
                     id="v-pills-semua"
                     role="tabpanel"
-                    aria-labelledby="v-pills-semua-tab">
+                    aria-labelledby="v-pills-semua-tab"
+                  >
                     <div className="col-lg-12 mx-auto row daftar-jual-cards">
                       <Link
                         to="/inputProduk"
-                        className="col-lg-4 col-sm-12 mb-4 daftar-jual-card tambah-daftar-jual-card d-flex flex-column justify-content-center align-items-center">
+                        className="col-lg-4 col-sm-12 mb-4 daftar-jual-card tambah-daftar-jual-card d-flex flex-column justify-content-center align-items-center"
+                      >
                         <img src="icons/plus.svg" alt="plus-icon" />
                         <p>Tambah Produk</p>
                       </Link>
                       {dataDummy.map((item) => {
                         return (
-                          <div key={item.id} className="col-lg-4 col-sm-12 mb-4 daftar-jual-card">
+                          <div
+                            key={item.id}
+                            className="col-lg-4 col-sm-12 mb-4 daftar-jual-card"
+                          >
                             <Card
                               img={item.image}
                               name={item.nama}
@@ -186,7 +218,8 @@ const DaftarJual = () => {
                     className="tab-pane fade daftar-jual-tab-pane"
                     id="v-pills-diminati"
                     role="tabpanel"
-                    aria-labelledby="v-pills-diminati-tab">
+                    aria-labelledby="v-pills-diminati-tab"
+                  >
                     <div className="col-lg-10 mx-auto row daftar-jual-cards">
                       {dataDiminati.length === 0 ? (
                         <DaftarKosong type="diminati" />
@@ -218,7 +251,8 @@ const DaftarJual = () => {
                     className="tab-pane fade daftar-jual-tab-pane"
                     id="v-pills-terjual"
                     role="tabpanel"
-                    aria-labelledby="v-pills-terjual-tab">
+                    aria-labelledby="v-pills-terjual-tab"
+                  >
                     <div className="col-lg-10 mx-auto row daftar-jual-cards">
                       {dataTerjual.length === 0 ? (
                         <DaftarKosong type="terjual" />
@@ -252,7 +286,8 @@ const DaftarJual = () => {
           </div>
         </div>
       </div>
-    );
-  };
+    </>
+  );
+};
 
-  export default DaftarJual;
+export default DaftarJual;

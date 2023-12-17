@@ -7,25 +7,27 @@ import {
   Container,
   Navbar,
   Nav,
-  NavDropdown,
   FormControl,
   InputGroup,
   Button,
   Offcanvas,
   Row,
   Col,
+  NavDropdown,
 } from "react-bootstrap";
 import { GiHamburgerMenu } from "react-icons/gi";
 import fi_list from "../../../assets/images/fi_list.png";
 import fi_bell from "../../../assets/images/fi_bell.png";
 import fi_user from "../../../assets/images/fi_user.png";
-import watch from "../../../assets/images/watch.png";
+import btnMasuk from "../../../assets/images/btnMasuk.png";
+import NotifikasiPopUp from "../../NotifikasiPopUp/NotifikasiPopUp";
 
 export default function NavbarHome() {
-  const [show, setShow] = useState(false);
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShowHamburgerMenu(false);
+  const handleShow = () => setShowHamburgerMenu(true);
   return (
     <div>
       <Navbar bg="light shadow-sm" expand="lg" id="NavDekstop">
@@ -46,15 +48,32 @@ export default function NavbarHome() {
               </InputGroup.Text>
             </InputGroup>
             <Nav className="ms-auto my-2 my-lg-0">
-              <Nav.Link href="/daftarjual">
-                <img src={fi_list} alt="list" />
-              </Nav.Link>
-              <Nav.Link href="/notifikasi">
-                <img src={fi_bell} alt="bell" />
-              </Nav.Link>
-              <Nav.Link href="/profile">
-                <img src={fi_user} alt="user" />
-              </Nav.Link>
+              {isLoggedIn ? (
+                <>
+                  <Nav.Link href="/daftarjual">
+                    <img src={fi_list} alt="list" />
+                  </Nav.Link>
+                  <NavDropdown
+                    className="custom-nav-dropdown overflow-hidden"
+                    title={<img src={fi_bell} alt="notificationBell" />}
+                  >
+                    <div className="popup-notifikasi">
+                      <NotifikasiPopUp />
+                    </div>
+                  </NavDropdown>
+                  <Nav.Link href="/profile">
+                    <img src={fi_user} alt="user" />
+                  </Nav.Link>
+                </>
+              ) : (
+                <Nav.Link href="login">
+                  <img
+                    src={btnMasuk}
+                    alt="tombolMasuk"
+                    style={{ width: "95%" }}
+                  />
+                </Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -66,7 +85,7 @@ export default function NavbarHome() {
               <GiHamburgerMenu />
             </Button>
             <div className="sidebar">
-              <Offcanvas show={show} onHide={handleClose}>
+              <Offcanvas show={showHamburgerMenu} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
                   <Offcanvas.Title>
                     <b>Second Hand</b>
