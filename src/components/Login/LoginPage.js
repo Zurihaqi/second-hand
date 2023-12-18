@@ -10,19 +10,40 @@ import {
 import SHD from "../../assets/images/SHD.png";
 import { useState } from "react";
 import { useFlash } from "../Flash/FlashContext";
+import axios from "axios";
 
 export default function LoginPage() {
   const [passwordShown, setPasswordShown] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { showFlash } = useFlash();
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
 
-  //testing purpose
-  const flashTest = () => {
-    showFlash("Success", "success");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const url = "http://localhost:3001/api/login";
+      const login = await axios.post(url, {
+        email: email,
+        password: password,
+      });
+
+      if (login.status === 200) {
+        showFlash("Berhasil login.", "success");
+        localStorage.setItem("token", login.data.token);
+      }
+    } catch (error) {
+      showFlash(error.response.data.message, "danger");
+    }
   };
+
+  //testing purpose
+  // const flashTest = () => {
+  //   showFlash("Success", "success");
+  // };
 
   return (
     <Container fluid className="p-0 overflow-hidden">
@@ -45,7 +66,7 @@ export default function LoginPage() {
               <h2>
                 <b>Masuk</b>
               </h2>
-              <Form>
+              <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
@@ -53,6 +74,8 @@ export default function LoginPage() {
                     autoComplete="email"
                     placeholder="Contoh: johndee@gmail.com"
                     style={{ borderRadius: "16px" }}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </Form.Group>
 
@@ -67,6 +90,8 @@ export default function LoginPage() {
                         borderTopLeftRadius: "16px",
                         borderBottomLeftRadius: "16px",
                       }}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
                     ></Form.Control>
                     <InputGroup.Text
                       onClick={togglePassword}
@@ -86,9 +111,8 @@ export default function LoginPage() {
 
                 <Button
                   variant="primary w-100"
-                  // type="submit"
+                  type="submit"
                   style={{ backgroundColor: "#7126B5", borderRadius: "16px" }}
-                  onClick={flashTest}
                 >
                   Masuk
                 </Button>

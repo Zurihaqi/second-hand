@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./NavbarHome.css";
 import { BiSearch } from "react-icons/bi";
 import {
@@ -25,6 +25,20 @@ import NotifikasiPopUp from "../../NotifikasiPopUp/NotifikasiPopUp";
 export default function NavbarHome() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkAuthentication = () => {
+      const storedToken = localStorage.getItem("token");
+
+      if (storedToken) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    };
+
+    checkAuthentication();
+  }, []);
 
   const handleClose = () => setShowHamburgerMenu(false);
   const handleShow = () => setShowHamburgerMenu(true);
