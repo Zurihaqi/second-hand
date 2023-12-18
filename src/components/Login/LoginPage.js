@@ -9,29 +9,38 @@ import {
 } from "react-icons/ai";
 import SHD from "../../assets/images/SHD.png";
 import { useState } from "react";
+import { useFlash } from "../Flash/FlashContext";
 
 export default function LoginPage() {
   const [passwordShown, setPasswordShown] = useState(false);
+  const { showFlash } = useFlash();
+
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
 
+  //testing purpose
+  const flashTest = () => {
+    showFlash("Success", "success");
+  };
+
   return (
-    <Container className="container-fluid p-0">
-      <Row className="mx-auto">
+    <Container fluid className="p-0 overflow-hidden">
+      <Row>
         <Link to="/" className="arrow-back p-4">
           <AiOutlineArrowLeft />
         </Link>
-        <Col lg={6}>
-          <img
-            src={SHD}
-            className="login-img img-fluid img_SHD"
-            alt="..."
-          ></img>
+        <Col>
+          <div>
+            <img src={SHD} className="login-img img-fluid" alt="logo"></img>
+          </div>
         </Col>
 
-        <Col lg={6} className="login-form d-flex">
-          <Row className="p-4 mx-auto align-items-center">
+        <Col
+          lg={6}
+          className="login-form d-flex justify-content-center align-items-center"
+        >
+          <Row className="mx-auto">
             <Col lg={12}>
               <h2>
                 <b>Masuk</b>
@@ -77,8 +86,9 @@ export default function LoginPage() {
 
                 <Button
                   variant="primary w-100"
-                  type="submit"
+                  // type="submit"
                   style={{ backgroundColor: "#7126B5", borderRadius: "16px" }}
+                  onClick={flashTest}
                 >
                   Masuk
                 </Button>

@@ -4,10 +4,13 @@ import RouteApp from "./routes";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { FlashProvider } from "./components/Flash/FlashContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouteApp />
+    <FlashProvider>
+      <RouteApp />
+    </FlashProvider>
   </React.StrictMode>
 );

@@ -24,7 +24,7 @@ import NotifikasiPopUp from "../../NotifikasiPopUp/NotifikasiPopUp";
 
 export default function NavbarHome() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleClose = () => setShowHamburgerMenu(false);
   const handleShow = () => setShowHamburgerMenu(true);

@@ -21,18 +21,15 @@ export default function RegisterPage() {
   const [confirmPasswordShown, toggleConfirmPassword] = useToggle(false);
 
   return (
-    <Container className="container-fluid p-0">
-      <Row className="mx-auto">
+    <Container fluid className="p-0 overflow-hidden">
+      <Row>
         <Link to="/" className="arrow-back p-4">
           <AiOutlineArrowLeft />
         </Link>
-        <Col lg={6}>
-          <img
-            src={SHD}
-            className="login-img img-fluid w-100 img_SHD"
-            alt="..."
-          ></img>
+        <Col>
+          <img src={SHD} className="login-img img-fluid" alt="..."></img>
         </Col>
+
         <Col lg={6} className="Register-form d-flex">
           <Row className="p-4 mx-auto align-items-center">
             <Col lg={12}>
