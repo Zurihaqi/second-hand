@@ -1,8 +1,13 @@
 .product-card {
-  /* width: 100%; */
   padding: 8px;
   border-radius: 4px;
   text-decoration: none;
+  overflow: hidden; /* Hide overflow to make slide-up effect visible */
+  transition: transform 0.3s ease; /* Add a transition for the transform property */
+}
+
+.product-card:hover {
+  transform: translateY(-10px); /* Adjust the distance of the slide-up effect */
 }
 
 .product-card img {

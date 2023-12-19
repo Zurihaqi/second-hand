@@ -1,57 +1,40 @@
 import React from "react";
 import "./Kategori.css";
-import { Container, Button, ButtonGroup } from "react-bootstrap";
+import { Container, ButtonGroup } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 
 export default function Kategori() {
   return (
-    <Container className="mt-3">
+    <Container className="shadow-sm p-3">
       <p>
         <b>Telusuri Kategori</b>
       </p>
       <div className="overflow-auto">
         <ButtonGroup>
-          <Button
-            style={{
-              borderRadius: "12px",
-              width: "150px",
-            }}
-          >
+          <button type="button" className="custom-btn">
             <AiOutlineSearch />
             Semua
-          </Button>
-          <Button
-            className="mx-2"
-            style={{ borderRadius: "12px", width: "150px" }}
-          >
+          </button>
+          <button type="button" className="custom-btn">
             <AiOutlineSearch />
             Hobi
-          </Button>
-          <Button style={{ borderRadius: "12px", width: "150px" }}>
+          </button>
+          <button type="button" className="custom-btn">
             <AiOutlineSearch />
             Kendaraan
-          </Button>
-          <Button
-            className="mx-2"
-            style={{ borderRadius: "12px", width: "150px" }}
-          >
+          </button>
+          <button type="button" className="custom-btn">
             <AiOutlineSearch />
             Baju
-          </Button>
-          <Button style={{ borderRadius: "12px", width: "150px" }}>
+          </button>
+          <button type="button" className="custom-btn">
             <AiOutlineSearch />
             Elektronik
-          </Button>
-          <Button
-            className="mx-2"
-            style={{
-              borderRadius: "12px",
-              width: "150px",
-            }}
-          >
+          </button>
+          <button type="button" className="custom-btn">
             <AiOutlineSearch />
             Kesehatan
-          </Button>
+          </button>
         </ButtonGroup>
       </div>
     </Container>

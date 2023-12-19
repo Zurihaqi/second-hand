@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import "./NavbarHome.css";
+import "./Navbar.css";
 import { BiSearch } from "react-icons/bi";
 import {
   Container,
@@ -16,19 +16,22 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import { GiHamburgerMenu } from "react-icons/gi";
-import fi_list from "../../../assets/images/fi_list.png";
-import fi_bell from "../../../assets/images/fi_bell.png";
-import fi_user from "../../../assets/images/fi_user.png";
-import btnMasuk from "../../../assets/images/btnMasuk.png";
-import NotifikasiPopUp from "../../NotifikasiPopUp/NotifikasiPopUp";
+import fi_list from "../../assets/images/fi_list.png";
+import fi_bell from "../../assets/images/fi_bell.png";
+import fi_user from "../../assets/images/fi_user.png";
+import btnMasuk from "../../assets/images/btnMasuk.png";
+import NotifikasiPopUp from "../NotifikasiPopUp/NotifikasiPopUp";
+import { useLocation } from "react-router-dom";
 
 export default function NavbarHome() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const checkAuthentication = () => {
       const storedToken = localStorage.getItem("token");
+      console.log(location.pathname);
 
       if (storedToken) {
         setIsLoggedIn(true);
@@ -38,7 +41,7 @@ export default function NavbarHome() {
     };
 
     checkAuthentication();
-  }, []);
+  }, [location.pathname]);
 
   const handleClose = () => setShowHamburgerMenu(false);
   const handleShow = () => setShowHamburgerMenu(true);
@@ -46,7 +49,13 @@ export default function NavbarHome() {
     <div>
       <Navbar bg="light shadow-sm" expand="lg" id="NavDekstop">
         <Container>
-          <Navbar.Brand href="/" className="navbarLogo"></Navbar.Brand>
+          <Navbar.Brand
+            href="/"
+            className="navbarLogo"
+            style={{ color: "white" }}
+          >
+            SecondHand.
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <InputGroup className="d-flex wrapper">
@@ -64,7 +73,7 @@ export default function NavbarHome() {
             <Nav className="ms-auto my-2 my-lg-0">
               {isLoggedIn ? (
                 <>
-                  <Nav.Link href="/daftarjual">
+                  <Nav.Link href="/listed-product">
                     <img src={fi_list} alt="list" />
                   </Nav.Link>
                   <NavDropdown
@@ -75,9 +84,13 @@ export default function NavbarHome() {
                       <NotifikasiPopUp />
                     </div>
                   </NavDropdown>
-                  <Nav.Link href="/profile">
-                    <img src={fi_user} alt="user" />
-                  </Nav.Link>
+                  <NavDropdown
+                    className="custom-nav-dropdown"
+                    title={<img src={fi_user} alt="user" />}
+                  >
+                    <NavDropdown.Item href="/profile">Profil</NavDropdown.Item>
+                    <NavDropdown.Item href="logout">Logout</NavDropdown.Item>
+                  </NavDropdown>
                 </>
               ) : (
                 <Nav.Link href="login">

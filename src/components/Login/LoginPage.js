@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginPage.css";
 import { Col, Row, Form, Button, InputGroup, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AiOutlineEye,
   AiOutlineEyeInvisible,
@@ -17,6 +17,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { showFlash } = useFlash();
+  const navigate__ = useNavigate();
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -34,6 +35,7 @@ export default function LoginPage() {
       if (login.status === 200) {
         showFlash("Berhasil login.", "success");
         localStorage.setItem("token", login.data.token);
+        navigate__("/");
       }
     } catch (error) {
       showFlash(error.response.data.message, "danger");

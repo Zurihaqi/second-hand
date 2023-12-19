@@ -5,7 +5,7 @@ import Card from "../../components/Card/Card";
 import DaftarKosong from "../../components/DaftarKosong/DaftarKosong";
 import CardLebar from "../../components/CardLebar/CardLebar";
 import DummyBarangTerjual from "../../assets/data/dataDummyBarangTerjual.json";
-import NavbarHome from "../../components/Navbar/NavbarHome/NavbarHome";
+import NavbarHome from "../../components/Navbar/Navbar";
 
 const DaftarJual = () => {
   const dataDummy = DummyBarangTerjual.DummyBarangTerjual;

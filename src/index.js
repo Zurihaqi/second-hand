@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import Routes from "./routes/routes";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import { FlashProvider } from "./components/Flash/FlashContext";
 import AuthProvider from "./provider/AuthProvider";
 
