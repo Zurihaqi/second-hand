@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./ProdukCard.css";
-// import DummyBarangTerjual from "../../../assets/data/dataDummyBarangTerjual.json";
 import { Row, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import jualButton from "../../../assets/images/jualButton.png";
@@ -8,6 +7,7 @@ import axios from "axios";
 import { useFlash } from "../../Flash/FlashContext";
 
 export default function ProductCard() {
+  // eslint-disable-next-line no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [data, setData] = useState([]);
   const { showFlash } = useFlash();
@@ -17,8 +17,6 @@ export default function ProductCard() {
       try {
         const url = "http://localhost:3001/api/home";
         const response = await axios.get(url);
-
-        console.log(response.data.data);
 
         if (response.status === 200) {
           setData(response.data.data);
@@ -55,7 +53,10 @@ export default function ProductCard() {
           {data.map((item) => {
             return (
               <div key={item.id} className="col-lg-2 col-sm-12 mb-4">
-                <a href=" " className="card product-card w-100 shadow-sm">
+                <a
+                  href={`/product-detail?id=${item.id}`}
+                  className="card product-card w-100 shadow-sm"
+                >
                   <img
                     src={item.product_images[0]}
                     className="card-img-top w-100"
@@ -80,7 +81,7 @@ export default function ProductCard() {
         </Row>
       </Container>
       <div className="fixed-bottom d-flex justify-content-center mb-2">
-        <Link to={isLoggedIn ? "/inputProduct" : "/login"}>
+        <Link to="/inputProduct">
           <img src={jualButton} alt="Tombol Jual" />
         </Link>
       </div>

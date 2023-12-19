@@ -1,12 +1,12 @@
-import React from 'react';
-import NavbarHome from "../../components/Navbar/NavbarHome/NavbarHome";
-import Detail from "./index";
+import React from "react";
+import DetailProdukPage from "../../components/DetailProduk/DetailProdukPage";
+import MainNavbar from "../../components/Navbar/Navbar";
 
-export default function DetailProduk(){
-    return(
-        <>
-            <NavbarHome />
-            <Detail />
-        </>
-    );
+export default function DetailProduk() {
+  return (
+    <>
+      <MainNavbar />
+      <DetailProdukPage />
+    </>
+  );
 }

@@ -13,7 +13,7 @@ export default function Carousel() {
     items: 3,
     margin: 100,
     autoplay: true,
-    dots: true,
+    dots: false,
     autoplayTimeout: 8500,
     smartSpeed: 450,
     nav: false,

@@ -18,11 +18,11 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
 }
 
 .detail-product-img .carousel-indicators .active {
-  background-color: #7126B5;
+  background-color: #7126b5;
 }
 
 .detail-product-img button {
@@ -66,7 +66,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #8A8A8A;
+  color: #8a8a8a;
 }
 
 .detail-product-name,
@@ -92,7 +92,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #8A8A8A;
+  color: #8a8a8a;
   margin-bottom: 16px;
 }
 
@@ -115,7 +115,7 @@
 }
 
 .modalBuyBtn {
-  background-color: #7126B5;
+  background-color: #7126b5;
 }
 
 .detail-product-seller {
@@ -148,7 +148,7 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 14px;
-  color: #8A8A8A;
+  color: #8a8a8a;
   margin-top: 4px;
 }
 
@@ -160,7 +160,7 @@
   display: none;
 }
 
-.detail-product-modal  {
+.detail-product-modal {
   max-width: 360px;
   margin: auto;
   border-radius: 16px;
@@ -195,12 +195,12 @@
 
 .modal-text-detail {
   margin-top: 16px;
-  color: #8A8A8A;
+  color: #8a8a8a;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
 .modal-product {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
   border-radius: 16px;
   padding: 16px;
@@ -210,7 +210,7 @@
 
 .modal-product img {
   border-radius: 12px;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   width: 48px;
   height: 48px;
   display: block;
@@ -239,11 +239,11 @@
 .modal-input-tawar {
   height: 48px;
   width: 100%;
-  border: 1px solid #D0D0D0;
+  border: 1px solid #d0d0d0;
   border-radius: 16px;
   padding: 12px 16px;
   margin-top: 4px;
-  color: #8A8A8A;
+  color: #8a8a8a;
   display: block;
 }
 
@@ -256,7 +256,7 @@
   border-radius: 12px;
   height: 52px;
   max-width: 500px;
-  background-color: #73CA5C;
+  background-color: #73ca5c;
   color: white;
   font-weight: 500;
   font-size: 14px;

@@ -38,7 +38,7 @@ export default function LoginPage() {
         navigate__("/");
       }
     } catch (error) {
-      showFlash(error.response.data.message, "danger");
+      showFlash(error.response?.data?.message || "Terjadi kesalahan", "danger");
     }
   };
 

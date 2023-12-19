@@ -1,15 +1,20 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
+import { useFlash } from "../components/Flash/FlashContext";
+import { useEffect } from "react";
 
 export const ProtectedRoutes = () => {
   const { token } = useAuth();
+  const { showFlash } = useFlash();
 
-  // Check if the user is authenticated
-  if (!token) {
-    // If not authenticated, redirect to the login page
-    return <Navigate to="/login" />;
-  }
+  useEffect(() => {
+    // Check if the user is authenticated
+    if (!token) {
+      // If not authenticated, show flash message and redirect to the login page
+      showFlash("Harap login terlebih dahulu", "warning");
+    }
+  }, [token, showFlash]);
 
   // If authenticated, render the child routes
-  return <Outlet />;
+  return token ? <Outlet /> : <Navigate to="/login" />;
 };

@@ -23,30 +23,14 @@ import btnMasuk from "../../assets/images/btnMasuk.png";
 import NotifikasiPopUp from "../NotifikasiPopUp/NotifikasiPopUp";
 import { useLocation } from "react-router-dom";
 
-export default function NavbarHome() {
+export default function MainNavbar() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const checkAuthentication = () => {
-      const storedToken = localStorage.getItem("token");
-      console.log(location.pathname);
-
-      if (storedToken) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    };
-
-    checkAuthentication();
-  }, [location.pathname]);
 
   const handleClose = () => setShowHamburgerMenu(false);
   const handleShow = () => setShowHamburgerMenu(true);
   return (
-    <div>
+    <>
       <Navbar bg="light shadow-sm" expand="lg" id="NavDekstop">
         <Container>
           <Navbar.Brand
@@ -58,20 +42,29 @@ export default function NavbarHome() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <InputGroup className="d-flex wrapper">
-              <FormControl
-                className="customSearch"
-                type="search"
-                placeholder="Cari disini..."
-                aria-label="search"
-                aria-describedby="basic-addon2"
-              />
-              <InputGroup.Text id="basic-addon2" className="customSearchIcon">
-                <BiSearch />
-              </InputGroup.Text>
-            </InputGroup>
-            <Nav className="ms-auto my-2 my-lg-0">
-              {isLoggedIn ? (
+            {location.pathname === "/" ||
+            location.pathname === "/product-detail" ? (
+              <InputGroup className="d-flex wrapper">
+                <FormControl
+                  className="customSearch"
+                  type="search"
+                  placeholder="Cari disini..."
+                  aria-label="search"
+                  aria-describedby="basic-addon2"
+                />
+                <InputGroup.Text id="basic-addon2" className="customSearchIcon">
+                  <BiSearch />
+                </InputGroup.Text>
+              </InputGroup>
+            ) : (
+              <h5 className="text-center mx-auto mt-2">
+                {location.pathname
+                  .replace(/\//g, "")
+                  .replace(/^\w/, (c) => c.toUpperCase())}
+              </h5>
+            )}
+            <Nav className="my-2 my-lg-0">
+              {localStorage.getItem("token") ? (
                 <>
                   <Nav.Link href="/listed-product">
                     <img src={fi_list} alt="list" />
@@ -89,7 +82,7 @@ export default function NavbarHome() {
                     title={<img src={fi_user} alt="user" />}
                   >
                     <NavDropdown.Item href="/profile">Profil</NavDropdown.Item>
-                    <NavDropdown.Item href="logout">Logout</NavDropdown.Item>
+                    <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
                   </NavDropdown>
                 </>
               ) : (
@@ -107,7 +100,7 @@ export default function NavbarHome() {
       </Navbar>
       <Container className="mt-4" id="SidebarMobile">
         <Row>
-          <Col>
+          <Col className="me-auto col-auto">
             <Button variant="light btnMobile" onClick={handleShow}>
               <GiHamburgerMenu />
             </Button>
@@ -134,22 +127,34 @@ export default function NavbarHome() {
               </Offcanvas>
             </div>
           </Col>
-          <Col>
-            <InputGroup className="d-flex wrapper">
-              <FormControl
-                className="customSearch2"
-                type="search"
-                placeholder="Cari disini..."
-                aria-label="search"
-                aria-describedby="basic-addon2"
-              />
-              <InputGroup.Text id="basic-addon2" className="customSearchIcon2">
-                <BiSearch />
-              </InputGroup.Text>
-            </InputGroup>
+          <Col className="d-flex text-center justify-content-center">
+            {location.pathname === "/" ||
+            location.pathname === "/product-detail" ? (
+              <InputGroup className="d-flex wrapper">
+                <FormControl
+                  className="customSearch2"
+                  type="search"
+                  placeholder="Cari disini..."
+                  aria-label="search"
+                  aria-describedby="basic-addon2"
+                />
+                <InputGroup.Text
+                  id="basic-addon2"
+                  className="customSearchIcon2"
+                >
+                  <BiSearch />
+                </InputGroup.Text>
+              </InputGroup>
+            ) : (
+              <h5 className="me-5">
+                {location.pathname
+                  .replace(/\//g, "")
+                  .replace(/^\w/, (c) => c.toUpperCase())}
+              </h5>
+            )}
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }

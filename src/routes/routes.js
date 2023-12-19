@@ -9,10 +9,10 @@ import { ProtectedRoutes } from "./ProtectedRoutes";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import Logout from "../components/Logout/Logout";
-import InputProfil from "../pages/InputProfil/InputProfil";
+import Logout from "../pages/Logout/Logout.jsx";
+import InputProfil from "../pages/InputProfil/InputProfil.jsx";
 import DaftarJual from "../pages/DaftarJual/DaftarJual";
-import DetailProduk from "../pages/DetailProduk";
+import DetailProduk from "../pages/DetailProduk/DetailProduk";
 import DetailPenawaran from "../pages/DetailPenawaran/DetailPenawaran";
 import DetailProdukSeller from "../pages/DetailProdukSeller/DetailProdukSeller";
 
@@ -25,14 +25,6 @@ const Routes = () => {
       path: "/",
       element: <Home />,
     },
-    // {
-    //   path: "/login",
-    //   element: <Login />,
-    // },
-    // {
-    //   path: "/register",
-    //   element: <Register />,
-    // },
   ];
 
   // Define routes accessible only to authenticated users
