@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import FormatCurrencies from "../FormatCurrencies/FormatCurrencies";
 import "./CardLebar.css";
 
-const CardLebar = ({
+export default function CardLebar({
   harga,
   nama,
   hargaPenawaran,
@@ -14,33 +14,30 @@ const CardLebar = ({
   type,
   href,
   image,
-}) => {
+}) {
   return (
-    <Link
-      to={href}
-      className="p-3 d-flex w-100 justify-content-between align-items-center product-card-lebar"
-    >
-      <img src={image} alt={nama} />
-      <div className="flex-fill ms-3">
-        <p className="text-penawaran-produk">
-          {type === "Penawaran" ? "Penawaran Produk" : "Barang Terjual"}
+    <div className="card-lebar">
+      <Link to={href}>
+        <img src={image} alt={nama} />
+        <div className="card-content">
+          <p className="text-penawaran-produk">
+            {type === "Penawaran" ? "Penawaran Produk" : "Barang Terjual"}
+          </p>
+          <p>{nama}</p>
+          <p>Rp {FormatCurrencies(harga)}</p>
+          <p>
+            {type} Rp{" "}
+            {FormatCurrencies(
+              type === "Penawaran" ? hargaPenawaran : hargaTerjual
+            )}
+          </p>
+        </div>
+        <p className="text-tanggal">
+          {moment(
+            type === "Penawaran" ? tanggalPenawaran : tanggalTerjual
+          ).format("D MMM YYYY, h:mm")}
         </p>
-        <p>{nama}</p>
-        <p>Rp {FormatCurrencies(harga)}</p>
-        <p>
-          {type} Rp{" "}
-          {FormatCurrencies(
-            type === "Penawaran" ? hargaPenawaran : hargaTerjual
-          )}
-        </p>
-      </div>
-      <p className="text-tanggal">
-        {moment(
-          type === "Penawaran" ? tanggalPenawaran : tanggalTerjual
-        ).format("D MMM YYYY, h:mm")}
-      </p>
-    </Link>
+      </Link>
+    </div>
   );
-};
-
-export default CardLebar;
+}

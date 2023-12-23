@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
-import { useFlash } from "../components/Flash/FlashContext";
+import { useFlash } from "../provider/FlashProvider";
 import { useEffect } from "react";
 
 export const ProtectedRoutes = () => {

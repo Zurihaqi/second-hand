@@ -7,6 +7,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   // State to hold the authentication token
   const [token, setToken_] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(null);
 
   // Function to set the authentication token
   const setToken = (newToken) => {
@@ -26,7 +27,17 @@ const AuthProvider = ({ children }) => {
         return;
       }
 
+      const fetchUserData = async () => {
+        try {
+          const response = await axios.get("http://localhost:3001/api/profile");
+          setUser(response.data.data);
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+
       localStorage.setItem("token", token);
+      fetchUserData();
     } else {
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem("token");
@@ -38,8 +49,10 @@ const AuthProvider = ({ children }) => {
     () => ({
       token,
       setToken,
+      user,
+      setUser,
     }),
-    [token]
+    [token, user]
   );
 
   // Provide the authentication context to the children components

@@ -9,7 +9,7 @@ import {
 } from "react-icons/ai";
 import SHD from "../../assets/images/SHD.png";
 import { useState } from "react";
-import { useFlash } from "../Flash/FlashContext";
+import { useFlash } from "../../provider/FlashProvider";
 import axios from "axios";
 
 export default function LoginPage() {

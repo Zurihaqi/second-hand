@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./ProdukCard.css";
-import { Row, Container } from "react-bootstrap";
+import { Row, Container, ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import jualButton from "../../../assets/images/jualButton.png";
 import axios from "axios";
-import { useFlash } from "../../Flash/FlashContext";
+import { useFlash } from "../../../provider/FlashProvider";
+import { AiOutlineSearch } from "react-icons/ai";
 
 export default function ProductCard() {
-  // eslint-disable-next-line no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [data, setData] = useState([]);
   const { showFlash } = useFlash();
 
@@ -32,25 +32,94 @@ export default function ProductCard() {
     fetchData();
   }, [showFlash]);
 
-  useEffect(() => {
-    const checkAuthentication = () => {
-      const storedToken = localStorage.getItem("token");
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
 
-      if (storedToken) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    };
-
-    checkAuthentication();
-  }, []);
+  const filteredData = selectedCategory
+    ? data.filter((item) => item.Category.name === selectedCategory)
+    : data;
 
   return (
     <div>
-      <Container className="mt-5">
+      <Container className="shadow-sm p-3 mb-4">
+        <p>
+          <b>Telusuri Kategori</b>
+        </p>
+        <div className="overflow-auto">
+          <ButtonGroup>
+            <button
+              type="button"
+              onClick={() => handleCategorySelect(null)}
+              className={
+                selectedCategory === null ? "active custom-btn" : "custom-btn"
+              }
+            >
+              <AiOutlineSearch />
+              Semua
+            </button>
+            <button
+              type="button"
+              onClick={() => handleCategorySelect("Hobi")}
+              className={
+                selectedCategory === "Hobi" ? "active custom-btn" : "custom-btn"
+              }
+            >
+              <AiOutlineSearch />
+              Hobi
+            </button>
+            <button
+              type="button"
+              onClick={() => handleCategorySelect("Kendaraan")}
+              className={
+                selectedCategory === "Kendaraan"
+                  ? "active custom-btn"
+                  : "custom-btn"
+              }
+            >
+              <AiOutlineSearch />
+              Kendaraan
+            </button>
+            <button
+              type="button"
+              onClick={() => handleCategorySelect("Baju")}
+              className={
+                selectedCategory === "Baju" ? "active custom-btn" : "custom-btn"
+              }
+            >
+              <AiOutlineSearch />
+              Baju
+            </button>
+            <button
+              type="button"
+              onClick={() => handleCategorySelect("Elektronik")}
+              className={
+                selectedCategory === "Elektronik"
+                  ? "active custom-btn"
+                  : "custom-btn"
+              }
+            >
+              <AiOutlineSearch />
+              Elektronik
+            </button>
+            <button
+              type="button"
+              conClick={() => handleCategorySelect("Kesehatan")}
+              className={
+                selectedCategory === "Kesehatan"
+                  ? "active custom-btn"
+                  : "custom-btn"
+              }
+            >
+              <AiOutlineSearch />
+              Kesehatan
+            </button>
+          </ButtonGroup>
+        </div>
+      </Container>
+      <Container>
         <Row>
-          {data.map((item) => {
+          {filteredData.map((item) => {
             return (
               <div key={item.id} className="col-lg-2 col-sm-12 mb-4">
                 <a

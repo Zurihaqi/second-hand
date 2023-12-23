@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAuth } from "../../provider/AuthProvider";
-import { useFlash } from "../Flash/FlashContext";
+import { useFlash } from "../../provider/FlashProvider";
 import { Navigate } from "react-router-dom";
 
 const LogoutComponent = () => {

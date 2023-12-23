@@ -1,5 +1,5 @@
 import React from "react";
-import { useFlash } from "./FlashContext";
+import { useFlash } from "../../provider/FlashProvider";
 import { Alert } from "react-bootstrap";
 import "./Flash.css";
 
@@ -17,7 +17,7 @@ export default function Flash({ visibility, message, type }) {
       variant={type}
       onClose={closeFlashButton}
       className={
-        "col-sm-4 mt-4 position-fixed top-0 start-50 translate-middle-x stack"
+        "col-sm-4 mt-5 position-fixed top-0 start-50 translate-middle-x stack"
       }
       style={{
         borderRadius: "16px",

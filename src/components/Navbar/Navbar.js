@@ -17,21 +17,49 @@ import {
 } from "react-bootstrap";
 import { GiHamburgerMenu } from "react-icons/gi";
 import fi_list from "../../assets/images/fi_list.png";
+import fi_list_hover from "../../assets/images/fi_list_hover.png";
 import fi_bell from "../../assets/images/fi_bell.png";
+import fi_bell_hover from "../../assets/images/fi_bell_hover.png";
 import fi_user from "../../assets/images/fi_user.png";
+import fi_user_hover from "../../assets/images/fi_user_hover.png";
 import btnMasuk from "../../assets/images/btnMasuk.png";
 import NotifikasiPopUp from "../NotifikasiPopUp/NotifikasiPopUp";
+import HoverDropdown from "./HoverDropdown/HoverDropdown";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../provider/AuthProvider";
 
 export default function MainNavbar() {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   const handleClose = () => setShowHamburgerMenu(false);
   const handleShow = () => setShowHamburgerMenu(true);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const iconSource = isHovered ? fi_list_hover : fi_list;
+
   return (
     <>
-      <Navbar bg="light shadow-sm" expand="lg" id="NavDekstop">
+      <Navbar
+        bg="light shadow-sm"
+        expand="lg"
+        id="NavDekstop"
+        className="sticky-top"
+        style={{ zIndex: "10" }}
+      >
         <Container>
           <Navbar.Brand
             href="/"
@@ -66,24 +94,27 @@ export default function MainNavbar() {
             <Nav className="my-2 my-lg-0">
               {localStorage.getItem("token") ? (
                 <>
-                  <Nav.Link href="/listed-product">
-                    <img src={fi_list} alt="list" />
-                  </Nav.Link>
-                  <NavDropdown
-                    className="custom-nav-dropdown overflow-hidden"
-                    title={<img src={fi_bell} alt="notificationBell" />}
+                  <Nav.Link
+                    href="/listed-product"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                   >
-                    <div className="popup-notifikasi">
-                      <NotifikasiPopUp />
-                    </div>
-                  </NavDropdown>
-                  <NavDropdown
-                    className="custom-nav-dropdown"
-                    title={<img src={fi_user} alt="user" />}
+                    <img src={iconSource} alt="list" />
+                  </Nav.Link>
+                  <HoverDropdown
+                    className="overflow-hidden"
+                    defaultIcon={fi_bell}
+                    hoveredIcon={fi_bell_hover}
+                  >
+                    <NotifikasiPopUp />
+                  </HoverDropdown>
+                  <HoverDropdown
+                    defaultIcon={fi_user}
+                    hoveredIcon={fi_user_hover}
                   >
                     <NavDropdown.Item href="/profile">Profil</NavDropdown.Item>
                     <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
-                  </NavDropdown>
+                  </HoverDropdown>
                 </>
               ) : (
                 <Nav.Link href="login">
@@ -98,7 +129,7 @@ export default function MainNavbar() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container className="mt-4" id="SidebarMobile">
+      <Container fluid className="mt-4" id="SidebarMobile">
         <Row>
           <Col className="me-auto col-auto">
             <Button variant="light btnMobile" onClick={handleShow}>

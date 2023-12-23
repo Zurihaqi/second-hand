@@ -1,5 +1,4 @@
 import React from "react";
-import Kategori from "./Kategori/Kategori";
 import ProdukCard from "./ProdukCard/ProdukCard";
 import MainNavbar from "../Navbar/Navbar";
 import Carousel from "./Carousel/Carousel";
@@ -10,7 +9,6 @@ export default function HomePage() {
     <>
       <MainNavbar />
       <Carousel />
-      <Kategori />
       <ProdukCard />
     </>
   );

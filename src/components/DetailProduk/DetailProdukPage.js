@@ -2,18 +2,44 @@
 import React, { useEffect, useState } from "react";
 import "./DetailProduk.css";
 import axios from "axios";
-import { useFlash } from "../Flash/FlashContext";
+import { useFlash } from "../../provider/FlashProvider";
 import FormatCurriencies from "../FormatCurrencies/FormatCurrencies";
-import { Carousel } from "react-bootstrap";
+import {
+  Carousel,
+  Modal,
+  ModalBody,
+  ModalDialog,
+  ModalFooter,
+  ModalHeader,
+} from "react-bootstrap";
+import ImageMagnifier from "./ImageMagnifier/ImageMagnifier";
 
 export default function DetailProdukPage() {
   const [data, setData] = useState({});
   const [index, setIndex] = useState(0);
-  const [alert, setAlert] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [amount, setAmount] = useState("");
+
   const { showFlash } = useFlash();
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
+  };
+
+  const showModal = () => setModal(true);
+
+  const hideModal = () => setModal(false);
+
+  const formatCurrency = (inputValue) => {
+    const numericValue = parseFloat(inputValue.replace(/[^0-9,]/g, "")) || 0;
+
+    const formattedValue = new Intl.NumberFormat("id-ID").format(numericValue);
+
+    setAmount(formattedValue ? `Rp ${formattedValue}` : "");
+  };
+
+  const handleChange = (e) => {
+    formatCurrency(e.target.value);
   };
 
   useEffect(() => {
@@ -44,17 +70,22 @@ export default function DetailProdukPage() {
         <div className="col-lg-6">
           {data.product_images?.length > 0 && (
             <Carousel
+              fade
               activeIndex={index}
               onSelect={handleSelect}
-              className="mb-4"
+              controls={false}
+              className="mb-4 text-center"
             >
               {data.product_images &&
                 data.product_images.map((image, idx) => (
                   <Carousel.Item key={idx}>
-                    <img
-                      className="d-block w-100"
+                    <ImageMagnifier
                       src={image}
-                      alt={`detail-product-img-${idx + 1}`}
+                      width="300px"
+                      magnifierHeight={120}
+                      magnifieWidth={120}
+                      zoomLevel={2}
+                      className="object-fit-content"
                     />
                   </Carousel.Item>
                 ))}
@@ -66,13 +97,13 @@ export default function DetailProdukPage() {
           </div>
         </div>
         <div className="col-lg-3">
-          <div className="detail-product-name mx-auto mt-auto">
+          <div className="detail-product-name mx-auto mt-2">
             <h5 className="title">{data.name}</h5>
             <p className="category">{data.Category?.name}</p>
             <h5 className="price">
               Rp{data.price && FormatCurriencies(data.price)}
             </h5>
-            <button type="button" className="btn">
+            <button type="button" className="btn" onClick={showModal}>
               Saya tertarik dan ingin nego
             </button>
           </div>
@@ -91,71 +122,55 @@ export default function DetailProdukPage() {
           </div>
         </div>
       </div>
-      <div
-        className="modal fade"
-        id="exampleModal"
+      <Modal
+        fade
+        id="modal"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
+        show={modal}
+        onHide={hideModal}
       >
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content detail-product-modal">
-            <div className="modal-header">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <p className="modal-text-medium">Masukkan Harga Tawarmu</p>
-              <p className="modal-text-detail">
-                Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu
-                akan segera dihubungi penjual.
+        <ModalHeader closeButton />
+        <ModalBody className="p-4">
+          <p className="modal-text-medium">Masukkan Harga Tawarmu</p>
+          <p className="modal-text-detail">
+            Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan
+            segera dihubungi penjual.
+          </p>
+          <div className="d-flex modal-product">
+            <img
+              src={data.product_images && data.product_images[0]}
+              alt="product"
+            />
+            <div className="flex-fill">
+              <p className="title">{data.name}</p>
+              <p className="price">
+                Rp {data.price && FormatCurriencies(data.price)}
               </p>
-              <div className="d-flex modal-product">
-                {/* Replace the next two lines with your actual modal content */}
-                <img src="images/product-1.png" alt="product" />
-                <div className="flex-fill">
-                  <p className="title">Jam Tangan Casio</p>
-                  <p className="price">Rp 250.000</p>
-                </div>
-              </div>
-              <p className="modal-text-tawar">Harga Tawar</p>
-              <input
-                type="number"
-                placeholder="Rp 0,00"
-                className="modal-input-tawar"
-              />
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="modalBuyBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                data-bs-dismiss="modal"
-              >
-                Kirim
-              </button>
             </div>
           </div>
-        </div>
-      </div>
-      {alert && (
-        <div className="row justify-content-center">
-          <div
-            className="col-lg-6 alert detail-product-alert d-flex justify-content-between"
-            role="alert"
+          <p className="modal-text-tawar">Harga Tawar</p>
+          <input
+            type="text"
+            className="modal-input-tawar"
+            placeholder="Masukan tawaran anda"
+            value={amount}
+            onChange={handleChange}
+          />
+        </ModalBody>
+        <ModalFooter>
+          <button
+            type="button"
+            className="modalBuyBtn"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            data-bs-dismiss="modal"
           >
-            <p>Harga tawarmu berhasil dikirim ke penjual</p>
-            <button type="button" data-bs-dismiss="modal" aria-label="Close">
-              <img src="/icons/close-icon.svg" alt="close" />
-            </button>
-          </div>
-        </div>
-      )}
+            Kirim
+          </button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 }
