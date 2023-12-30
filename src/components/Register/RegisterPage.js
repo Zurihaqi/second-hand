@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RegisterPage.css";
 import { Col, Row, Form, Button, InputGroup, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -8,7 +8,8 @@ import {
   AiOutlineEyeInvisible,
 } from "react-icons/ai";
 import SHD from "../../assets/images/SHD.png";
-import { useState } from "react";
+import axios from "axios";
+import { useFlash } from "../../provider/FlashProvider";
 
 const useToggle = (initialState = false) => {
   const [state, setState] = useState(initialState);
@@ -19,6 +20,39 @@ const useToggle = (initialState = false) => {
 export default function RegisterPage() {
   const [passwordShown, togglePassword] = useToggle(false);
   const [confirmPasswordShown, toggleConfirmPassword] = useToggle(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const { showFlash } = useFlash();
+
+  async function handleRegister(e) {
+    e.preventDefault();
+    try {
+      const url = "http://localhost:3001/api/register";
+      const register = await axios.post(url, {
+        name: name,
+        email: email,
+        password: password,
+      });
+
+      if (passwordConfirm !== password) {
+        showFlash("Password tidak sama", "danger");
+      }
+
+      if (register.status === 200) {
+        showFlash("Berhasil mendaftar.", "success");
+        setName("");
+        setEmail("");
+        setPassword("");
+        setPasswordConfirm("");
+      }
+    } catch (error) {
+      console.log(error.response.data.message);
+      showFlash(error.response?.data?.message || "Terjadi kesalahan", "danger");
+    }
+  }
 
   return (
     <Container fluid className="p-0 overflow-hidden">
@@ -36,7 +70,7 @@ export default function RegisterPage() {
               <h2>
                 <b>Daftar</b>
               </h2>
-              <Form>
+              <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                   <Form.Label>Nama</Form.Label>
                   <Form.Control
@@ -44,6 +78,8 @@ export default function RegisterPage() {
                     placeholder="Nama Lengkap"
                     autoComplete="name"
                     style={{ borderRadius: "16px" }}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                   />
                 </Form.Group>
 
@@ -54,6 +90,8 @@ export default function RegisterPage() {
                     autoComplete="email"
                     placeholder="Contoh: johndee@gmail.com"
                     style={{ borderRadius: "16px" }}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </Form.Group>
 
@@ -68,6 +106,8 @@ export default function RegisterPage() {
                         borderTopLeftRadius: "16px",
                         borderBottomLeftRadius: "16px",
                       }}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
                     ></Form.Control>
                     <InputGroup.Text
                       onClick={togglePassword}
@@ -96,6 +136,8 @@ export default function RegisterPage() {
                         borderTopLeftRadius: "16px",
                         borderBottomLeftRadius: "16px",
                       }}
+                      onChange={(e) => setPasswordConfirm(e.target.value)}
+                      required
                     ></Form.Control>
                     <InputGroup.Text
                       onClick={toggleConfirmPassword}

@@ -104,7 +104,7 @@ export default function ProductCard() {
             </button>
             <button
               type="button"
-              conClick={() => handleCategorySelect("Kesehatan")}
+              onClick={() => handleCategorySelect("Kesehatan")}
               className={
                 selectedCategory === "Kesehatan"
                   ? "active custom-btn"

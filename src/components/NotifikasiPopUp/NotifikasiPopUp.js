@@ -12,22 +12,19 @@ const PopUpNotifikasi = () => {
       {dataDummy
         .sort((a, b) => b.tanggal - a.tanggal)
         .slice(0, 2)
-        .map((item) => {
-          return (
-            <NavDropdown.Item>
-              <CardLebar
-                key={item.id}
-                harga={item.harga}
-                nama={item.nama}
-                hargaPenawaran={item.hargaTawar}
-                tanggalPenawaran={item.tanggal}
-                type="Penawaran"
-                href=""
-                image="images/product-1.png"
-              />
-            </NavDropdown.Item>
-          );
-        })}
+        .map((item) => (
+          <NavDropdown.Item key={item.id} href="/">
+            <CardLebar
+              harga={item.harga}
+              nama={item.nama}
+              hargaPenawaran={item.hargaTawar}
+              tanggalPenawaran={item.tanggal}
+              type="Penawaran"
+              href="#"
+              image="images/product-1.png"
+            />
+          </NavDropdown.Item>
+        ))}
     </>
   );
 };

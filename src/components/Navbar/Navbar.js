@@ -86,9 +86,9 @@ export default function MainNavbar() {
               </InputGroup>
             ) : (
               <h5 className="text-center mx-auto mt-2">
-                {location.pathname
+                {/* {location.pathname
                   .replace(/\//g, "")
-                  .replace(/^\w/, (c) => c.toUpperCase())}
+                  .replace(/^\w/, (c) => c.toUpperCase())} */}
               </h5>
             )}
             <Nav className="my-2 my-lg-0">
@@ -178,9 +178,9 @@ export default function MainNavbar() {
               </InputGroup>
             ) : (
               <h5 className="me-5">
-                {location.pathname
+                {/* {location.pathname
                   .replace(/\//g, "")
-                  .replace(/^\w/, (c) => c.toUpperCase())}
+                  .replace(/^\w/, (c) => c.toUpperCase())} */}
               </h5>
             )}
           </Col>

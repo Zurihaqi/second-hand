@@ -8,6 +8,8 @@
   text-transform: capitalize;
   padding-bottom: 16px;
   border-bottom: 1px solid #e5e5e5;
+  /* position: relative; */
+  /* right: 200px */
 }
 
 .product-card-lebar:last-child {

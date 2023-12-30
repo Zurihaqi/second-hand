@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.owl-item.center {
+  z-index: 2
+}
+
 @media (min-width: 768px) {
   .owl-item.active img {
     opacity: 0.7;

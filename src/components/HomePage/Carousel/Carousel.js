@@ -11,7 +11,7 @@ export default function Carousel() {
     loop: true,
     center: true,
     items: 3,
-    margin: 100,
+    // margin: 100,
     autoplay: true,
     dots: false,
     autoplayTimeout: 8500,
@@ -21,10 +21,10 @@ export default function Carousel() {
       0: {
         items: 1,
       },
-      500: {
-        items: 3,
+      480: {
+        items: 2,
       },
-      700: {
+      800: {
         items: 3,
       },
     },
